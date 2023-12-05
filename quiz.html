@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #070707;
+            text-align: center;
+            color: #ffffff;
+        }
+            
+        #quiz-container {
+            width: 550px;
+            height: 600px;
+            margin: 50px auto;
+            background-color: rgba(255,255,255,0.13);
+        position: absolute;
+        transform: translate(-50%,-50%);
+        top: 50%;
+        left: 50%;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255,255,255,0.1);
+        box-shadow: 0 0 40px rgba(8,7,16,0.6);
+        padding: 50px 35px;
+        }
+
+        .question {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .option {
+            margin: 5px 0;
+        }
+
+        #result-container {
+            margin-top: 20px;
+        }
+
+        #result {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3498db;
+            margin-top: 10px;
+        }
+        .new{
+    margin-top: 14px;
+    width: 100%;
+    background-color: #321dce;
+    color: #ffffff;
+    padding: 15px 0;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <a href="{% url 'nt1' %}" class="btn btn-primary new">back</a>
+<div id="quiz-container">
+    <div class="question">{{a}}</div>
+    <div class="options">
+        <div class="option"><input type="radio" name="q1" value="a"> a) ಬಲ</div>
+        <div class="option"><input type="radio" name="q1" value="b"> b) ನಿಮಗೆ ಕೃತಜ್ಞತೆಗಳು</div>
+        <div class="option"><input type="radio" name="q1" value="c"> c)ಬೈಸಿಕಲ್ </div>
+        <div class="option"><input type="radio" name="q1" value="d"> d) ನೀರು</div>
+    </div>
+    <div class="question">2 {{b}}</div>
+    <div class="options">
+        <div class="option"><input type="radio" name="q2" value="a"> a)ಟೆಲಿಫೋನ್</div>
+        <div class="option"><input type="radio" name="q2" value="b"> b)ಬೈಸಿಕಲ್</div>
+        <div class="option"><input type="radio" name="q2" value="c"> c)ನೀರು</div>
+        <div class="option"><input type="radio" name="q2" value="d"> d)ಕೊಡೆ</div>
+    </div>
+    <div class="question">3 {{c}}</div>
+    <div class="options">
+        <div class="option"><input type="radio" name="q3" value="a"> a) ವಿಮಾನ</div>
+        <div class="option"><input type="radio" name="q3" value="b">  b) ಮನೆ</div>
+        <div class="option"><input type="radio" name="q3" value="c"> c)  ಎಡ</div>
+        <div class="option"><input type="radio" name="q3" value="d"> d) ಕೊಡೆ</div>
+    </div>
+    <div class="question">4 {{d}}</div>
+    <div class="options">
+        <div class="option"><input type="radio" name="q4" value="a"> a)ಕ್ಷಮಿಸಿ</div>
+        <div class="option"><input type="radio" name="q4" value="b"> b)ನಿಮಗೆ ಕೃತಜ್ಞತೆಗಳು</div>
+        <div class="option"><input type="radio" name="q4" value="c"> c) ನನಗೆ ಗೊತ್ತಿಲ್</div>
+        <div class="option"><input type="radio" name="q4" value="d"> d) ಎಡ</div>
+    </div>
+
+    
+
+    <button onclick="calculateResult()">Submit</button>
+</div>
+
+<div id="result-container">
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateResult() {
+        var totalQuestions = 4; 
+        var correctAnswers = -2;
+
+        for (var i = 1; i <= totalQuestions; i++) {
+            var selectedAnswer = document.querySelector('input[name="q' + i + '"]:checked');
+
+            if (selectedAnswer && selectedAnswer.value == "b") {
+                correctAnswers=correctAnswers+1;
+            }
+            var selectedAnswer1 = document.querySelector('input[name="q' + i + '"]:checked');
+
+            if (selectedAnswer1 && selectedAnswer1.value == "c") {
+                correctAnswers=correctAnswers+1;
+            }
+            var selectedAnswer2 = document.querySelector('input[name="q' + i + '"]:checked');
+
+            if (selectedAnswer2 && selectedAnswer2.value == "b") {
+                correctAnswers=correctAnswers+1;
+            }
+            var selectedAnswer3 = document.querySelector('input[name="q' + i + '"]:checked');
+
+            if (selectedAnswer3 && selectedAnswer3.value == "a") {
+                correctAnswers=correctAnswers+1;
+            }
+        }
+
+        var resultContainer = document.getElementById('result');
+        resultContainer.textContent = "Total Correct Answers: " + correctAnswers + " out of " + totalQuestions;
+        resultContainer.style.color = "#2ecc71";
+    }
+</script>
+
+</body>
+</html>

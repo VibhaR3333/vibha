@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>MODULE-1</title>
+ 
+    
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #080710;
+}
+.background{
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 100%;
+}
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
+form{
+    height: 330px;
+    width: 330px;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
+}
+
+
+.outer{
+    
+height: 240px;
+    
+width: 240px;
+    
+border-radius: 50%;
+    
+padding: 20px;
+    
+box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+            -6px -6px 10px -1px rgba(255,255,255,0.7)
+    
+}
+.inner{
+
+height: 200px;
+        
+width: 200px;
+        
+border-radius: 50%;
+display:flex;
+align-items: center;
+justify-content: center;
+        
+box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+            inset -4px -4px 6px -1px rgba(231, 225, 225, 0.7),
+            -0.5px -0.5px 0px rgba(255,255,255,1),
+            0.5px 0.5px 0px rgba(0,0,0,0.15), 
+            0px 12px 10px -10px rgba(0,0,0,0.05);
+        
+}
+#number{
+
+font-weight: 1000;
+font-size: 100;
+color: #f8f4f4;
+            
+}
+circle{
+fill: none;
+animation:anim 3s linear forwards;
+}
+              
+
+.new{
+    text-align: right;
+    color: #ffffff;
+    padding: 15px 0;
+    font-size: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <a href="{% url 'nt1' %}" class="btn btn-primary new"><h1>back</h1></a>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form action="" method="post">
+        <section class="firstsection">
+            <div class="box-main">
+                <div class="firstHalf">
+                    
+                    <div class="skill">
+
+                        <div class="outer">
+                        
+                        <div class="inner">
+                            
+                            <div id="number">
+                                
+                            </div>
+                        </div>
+                        
+                        </div>
+                        </div>
+                        <script>
+                            // Retrieve the number from the URL parameter
+    var urlParams = new URLSearchParams(window.location.search);
+    var receivedNumber = urlParams.get('numberToPass');
+
+    // Display the received number
+    if (receivedNumber) {
+      document.body.innerHTML += '<p>Received Number: ' + receivedNumber + '</p>';
+    } else {
+      document.body.innerHTML += '<p>No number received.</p>';
+    }
+
+                            let number = document.getElementById("number");
+                        
+                        let counter = 0;
+                        
+                        setInterval(() => {
+                        
+                        if(counter == receivedNumber){
+                        
+                        clearInterval();
+                        
+                        }else{
+                        
+                        counter += 1;
+                        
+                        number.innerHTML = counter + "%";
+                        
+                        }
+                        
+                        }, 30);
+                          
+                        </script>
+                        
+                </div>
+            </div>
+        </section>
+    
+    </form>
+</body>
+</html>
+
